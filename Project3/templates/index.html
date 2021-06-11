@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link rel="stylesheet" href="{% static 'mystyle.css' %}">
+</head>
+<body>
+<form method="post" action="/index/">
+    {% csrf_token %}
+    <table align="center" border="2">
+        <tr>
+            <th colspan="2">login Page</th>
+        </tr>
+        <tr>
+            <td>Username</td>
+            <td><input type="text" placeholder="username" name="name" required></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" placeholder="password" name="password" required></td>
+        </tr>
+        <tr>
+            <th colspan="2"><select name="type">
+                <option>Admin</option>
+                <option>Employee</option>
+                <option>Customer</option>
+            </select></th>
+        </tr>
+        <tr>
+           <th colspan="2"><button type="submit">login</button></th>
+        </tr>
+    </table>
+</form>
+{% if message == 'Invalid' %}
+<h1>Sorry!Invalid User</h1>
+{% endif %}
+</body>
+</html>
